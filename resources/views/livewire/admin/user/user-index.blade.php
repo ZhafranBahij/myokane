@@ -11,7 +11,7 @@
                         </div>
                     @endif
 
-                    <a href=""  class="btn btn-primary">
+                    <a href="{{ route('users.create') }}"  class="btn btn-primary" wire:navigate>
                         Add User +
                     </a>
 
@@ -29,6 +29,10 @@
                         @foreach ($users as $item)
                             <tr>
                                 <th scope="row"> {{ $item->id }} </th>
+                                <td>
+                                    <a href="{{ route('users.edit', $item->id) }}" type="button" class="btn btn-warning" wire:navigate>Edit</a>
+                                    <button type="button" class="btn btn-danger" wire:click="delete({{ $item->id }})" wire:confirm="Are you serious want to delete?">Delete</button>
+                                </td>
                                 <td> {{ $item->name }} </td>
                                 <td> {{ $item->email }} </td>
                             </tr>

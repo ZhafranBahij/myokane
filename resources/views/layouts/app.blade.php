@@ -32,8 +32,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item" >
+                            <a class="nav-link" href="{{ route('home') }}" wire:navigate>{{ __('Home') }}</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link text-capitalize" href="{{ route('users') }}"  wire:navigate>{{ __('user') }}</a>
                         </li>
                     </ul>
 
