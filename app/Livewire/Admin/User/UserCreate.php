@@ -32,7 +32,7 @@ class UserCreate extends Component
         ]);
 
         session()->flash('status', 'User successfully created.');
-        return $this->redirectRoute('users', navigate: true);
+        return $this->redirectRoute('users.index', navigate: true);
     }
 
     #[Layout('layouts.app')]

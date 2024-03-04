@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('User') }}</div>
+                <div class="card-header">{{ __('Income') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -12,8 +12,8 @@
                         </div>
                     @endif
 
-                    <a href="{{ route('users.create') }}"  class="btn btn-primary" wire:navigate>
-                        Add User +
+                    <a href="{{ route('incomes.create') }}"  class="btn btn-primary" wire:navigate>
+                        Add Income +
                     </a>
 
                     <div class="input-group mb-3 mt-3">
@@ -26,26 +26,28 @@
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Action</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">Description</th>
                             {{-- <th scope="col">Handle</th> --}}
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $item)
+                        @foreach ($incomes as $item)
                             <tr>
                                 <th scope="row"> {{ $item->id }} </th>
                                 <td>
-                                    <a href="{{ route('users.edit', $item->id) }}" type="button" class="btn btn-warning" wire:navigate wire:loading.attr="disabled">Edit</a>
+                                    <a href="{{ route('incomes.edit', $item->id) }}" type="button" class="btn btn-warning" wire:navigate wire:loading.attr="disabled">Edit</a>
                                     <button type="button" class="btn btn-danger" wire:click="delete({{ $item->id }})" wire:confirm="Are you serious want to delete?" wire:loading.attr="disabled">Delete</button>
                                 </td>
-                                <td> {{ $item->name }} </td>
-                                <td> {{ $item->email }} </td>
+                                <td> {{ $item->user->name }} </td>
+                                <td> Rp. {{ number_format($item->value, 0, ',', '.') }}</td>
+                                <td> {{ $item->description }} </td>
                             </tr>
                         @endforeach
                         </tbody>
                       </table>
-                      {{ $users->links() }}
+                      {{ $incomes->links() }}
                 </div>
             </div>
         </div>

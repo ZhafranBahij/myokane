@@ -36,7 +36,13 @@
                             <a class="nav-link" href="{{ route('home') }}" wire:navigate>{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-capitalize" href="{{ route('users') }}"  wire:navigate>{{ __('user') }}</a>
+                            <a class="nav-link text-capitalize" href="{{ route('users.index') }}"  wire:navigate>{{ __('user') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-capitalize" href="{{ route('incomes.index') }}"  wire:navigate>{{ __('income') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-capitalize" href="{{ route('outcomes.index') }}"  wire:navigate>{{ __('outcome') }}</a>
                         </li>
                     </ul>
 

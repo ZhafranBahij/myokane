@@ -1,6 +1,12 @@
 <?php
 
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\Income\IncomeCreate;
+use App\Livewire\Admin\Income\IncomeEdit;
+use App\Livewire\Admin\Income\IncomeIndex;
+use App\Livewire\Admin\Income\OutcomeCreate;
+use App\Livewire\Admin\Income\OutcomeEdit;
+use App\Livewire\Admin\Income\OutcomeIndex;
 use App\Livewire\Admin\User\UserCreate;
 use App\Livewire\Admin\User\UserEdit;
 use App\Livewire\Admin\User\UserIndex;
@@ -24,8 +30,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', Dashboard::class)->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', Dashboard::class)->name('home');
 
-Route::get('/users', UserIndex::class)->name('users');
-Route::get('/users/create', UserCreate::class)->name('users.create');
-Route::get('/users/{user}/edit', UserEdit::class)->name('users.edit');
+    Route::name('users.')->prefix('/users')->group(function () {
+        Route::get('/', UserIndex::class)->name('index');
+        Route::get('/create', UserCreate::class)->name('create');
+        Route::get('/{user}/edit', UserEdit::class)->name('edit');
+    });
+
+    Route::name('incomes.')->prefix('/incomes')->group(function () {
+        Route::get('/', IncomeIndex::class)->name('index');
+        Route::get('/create', IncomeCreate::class)->name('create');
+        Route::get('/{income}/edit', IncomeEdit::class)->name('edit');
+    });
+
+    Route::name('outcomes.')->prefix('/outcomes')->group(function () {
+        Route::get('/', OutcomeIndex::class)->name('index');
+        Route::get('/create', OutcomeCreate::class)->name('create');
+        Route::get('/{outcome}/edit', OutcomeEdit::class)->name('edit');
+    });
+});
