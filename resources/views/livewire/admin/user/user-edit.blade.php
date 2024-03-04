@@ -22,7 +22,11 @@
                           <input type="email" wire:model.blur="email" class="form-control" id="email" required>
                           <div class="text-danger">@error('email') {{ $message }} @enderror</div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary"
+                        wire:loading.attr="disabled"
+                        >
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
