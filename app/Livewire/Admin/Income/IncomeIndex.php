@@ -14,6 +14,13 @@ class IncomeIndex extends Component
 
     public $search;
 
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
+    }
+
     public function delete(Income $income){
         $income->delete();
 

@@ -14,6 +14,13 @@ class OutcomeIndex extends Component
 
     public $search;
 
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
+    }
+
     public function delete(Outcome $outcome){
         $outcome->delete();
 

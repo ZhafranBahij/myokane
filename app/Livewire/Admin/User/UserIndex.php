@@ -15,6 +15,13 @@ class UserIndex extends Component
     // public $users;
     public $search;
 
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
+    }
+
     public function delete(User $user){
         $user->delete();
 
