@@ -10,13 +10,14 @@ use Livewire\Component;
 class OutcomeCreate extends Component
 {
     #[Validate]
-    public $value, $description;
+    public $value, $description, $date;
 
     public function rules()
     {
         return [
             'value' => 'required|min:1000|max:1000000000|numeric',
             'description' => 'required|min:8|max:100',
+            'date' => 'required',
         ];
     }
 
@@ -28,6 +29,7 @@ class OutcomeCreate extends Component
             'user_id' => auth()->user()->id,
             'value' => $this->value,
             'description' => $this->description,
+            'date' => $this->date,
         ]);
 
         session()->flash('status', 'Outcome successfully created.');

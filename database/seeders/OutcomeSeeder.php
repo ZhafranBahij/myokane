@@ -17,6 +17,7 @@ class OutcomeSeeder extends Seeder
             'user_id' => 1,
             'value' => 10_000,
             'description' => "makan bakso",
+            'date' => now(),
         ]);
     }
 }

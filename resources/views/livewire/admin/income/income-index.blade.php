@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Income') }}</div>
 
@@ -11,6 +11,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+
+                    <div class="mb-3">
+                        Total Saldo : {{ $total_saldo }}
+                    </div>
 
                     <a href="{{ route('incomes.create') }}"  class="btn btn-primary" wire:navigate>
                         Add Income +
@@ -29,6 +33,7 @@
                             <th scope="col">User</th>
                             <th scope="col">Value</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Date</th>
                             {{-- <th scope="col">Handle</th> --}}
                           </tr>
                         </thead>
@@ -43,6 +48,7 @@
                                 <td> {{ $item->user->name }} </td>
                                 <td> Rp. {{ number_format($item->value, 0, ',', '.') }}</td>
                                 <td> {{ $item->description }} </td>
+                                <td> {{ $item->date }} </td>
                             </tr>
                         @endforeach
                         </tbody>

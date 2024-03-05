@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('User') }}</div>
 
@@ -28,7 +28,7 @@
                             <th scope="col">Action</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            {{-- <th scope="col">Handle</th> --}}
+                            <th scope="col">Role</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -41,6 +41,15 @@
                                 </td>
                                 <td> {{ $item->name }} </td>
                                 <td> {{ $item->email }} </td>
+                                <td>
+                                    <ul>
+                                        @foreach ($item->getRoleNames() as $role)
+                                            <li>
+                                                {{ $role }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

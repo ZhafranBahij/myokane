@@ -13,6 +13,7 @@ class Outcome extends Model
         'user_id',
         'value',
         'description',
+        'date',
     ];
 
     public function User(){

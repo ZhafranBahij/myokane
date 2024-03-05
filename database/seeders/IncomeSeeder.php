@@ -17,6 +17,7 @@ class IncomeSeeder extends Seeder
             'user_id' => 1,
             'value' => 15_000,
             'description' => "uang jajan dari ayah",
+            'date' => now(),
         ]);
     }
 }

@@ -31,6 +31,8 @@ class UserCreate extends Component
             'password' => $this->password,
         ]);
 
+        $user->assignRole('user');
+
         session()->flash('status', 'User successfully created.');
         return $this->redirectRoute('users.index', navigate: true);
     }

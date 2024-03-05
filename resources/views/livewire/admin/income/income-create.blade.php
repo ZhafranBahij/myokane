@@ -22,6 +22,11 @@
                           <textarea wire:model.blur="description"  id="" cols="5" rows="10" class="form-control"></textarea>
                           <div class="text-danger">@error('description') {{ $message }} @enderror</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label text-capitalize">date</label>
+                            <input type="date" wire:model.blur="date" class="form-control" id="date" required>
+                            <div class="text-danger">@error('date') {{ $message }} @enderror</div>
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
