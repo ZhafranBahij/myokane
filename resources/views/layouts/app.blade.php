@@ -44,6 +44,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('outcomes.*') ? 'active' : '' }}" href="{{ route('outcomes.index') }}"  wire:navigate>{{ __('outcome') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-capitalize" href="/clockwork/app" target="_blank">{{ __('clockwork') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
