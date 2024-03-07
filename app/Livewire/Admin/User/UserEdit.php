@@ -38,12 +38,19 @@ class UserEdit extends Component
         ]);
 
         session()->flash('status', 'User successfully edited.');
+
         return $this->redirectRoute('users.index', navigate: true);
     }
 
     #[Layout('layouts.app')]
     public function render()
     {
+
+        $authorization = auth()->user()->hasPermissionTo('edit user');
+        if (! $authorization) {
+            return view('livewire.admin.forbidden');
+        }
+
         return view('livewire.admin.user.user-edit');
     }
 }

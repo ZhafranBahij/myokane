@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IncomeSeeder::class,
             OutcomeSeeder::class,
+            PermissionSeeder::class,
         ]);
     }
 }

@@ -35,22 +35,22 @@
                         <li class="nav-item" >
                             <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" href="{{ route('home') }}" wire:navigate>{{ __('Home') }}</a>
                         </li>
-                        @role('admin')
+                        @can('view user')
                             <li class="nav-item">
                                 <a class="nav-link text-capitalize {{ Route::is('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"  wire:navigate>{{ __('user') }}</a>
                             </li>
-                        @endrole
+                        @endcan
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('incomes.*') ? 'active' : '' }}" href="{{ route('incomes.index') }}"  wire:navigate>{{ __('income') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('outcomes.*') ? 'active' : '' }}" href="{{ route('outcomes.index') }}"  wire:navigate>{{ __('outcome') }}</a>
                         </li>
-                        @role('admin')
+                        @can('view clockwork')
                             <li class="nav-item">
                                 <a class="nav-link text-capitalize" href="/clockwork/app" target="_blank">{{ __('clockwork') }}</a>
                             </li>
-                        @endrole
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
