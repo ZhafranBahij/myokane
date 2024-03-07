@@ -34,7 +34,8 @@
                             <th scope="col">Value</th>
                             <th scope="col">Description</th>
                             <th scope="col">Date</th>
-                            {{-- <th scope="col">Handle</th> --}}
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,8 @@
                                 <td> Rp. {{ number_format($item->value, 0, ',', '.') }}</td>
                                 <td> {{ $item->description }} </td>
                                 <td> {{ $item->date }} </td>
+                                <td> {{ $item->created_at }} </td>
+                                <td> {{ $item->updated_at }} </td>
                             </tr>
                         @endforeach
                         </tbody>

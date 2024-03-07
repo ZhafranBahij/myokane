@@ -29,6 +29,8 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Role</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -50,6 +52,8 @@
                                         @endforeach
                                     </ul>
                                 </td>
+                                <td> {{ $item->created_at }} </td>
+                                <td> {{ $item->updated_at }} </td>
                             </tr>
                         @endforeach
                         </tbody>

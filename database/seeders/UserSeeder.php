@@ -30,6 +30,14 @@ class UserSeeder extends Seeder
             'name' => 'user',
         ]);
 
+        $user = User::create([
+            'name' => 'kapibara',
+            'email' => 'kapibara@gmail.com',
+            'password' => 'kapibara',
+        ]);
+
+        $user->assignRole($role_user);
+
         $users = User::factory()
                     ->count(100)
                     ->create();

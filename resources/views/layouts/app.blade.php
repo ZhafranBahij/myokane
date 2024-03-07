@@ -35,18 +35,22 @@
                         <li class="nav-item" >
                             <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" href="{{ route('home') }}" wire:navigate>{{ __('Home') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-capitalize {{ Route::is('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"  wire:navigate>{{ __('user') }}</a>
-                        </li>
+                        @role('admin')
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize {{ Route::is('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"  wire:navigate>{{ __('user') }}</a>
+                            </li>
+                        @endrole
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('incomes.*') ? 'active' : '' }}" href="{{ route('incomes.index') }}"  wire:navigate>{{ __('income') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('outcomes.*') ? 'active' : '' }}" href="{{ route('outcomes.index') }}"  wire:navigate>{{ __('outcome') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-capitalize" href="/clockwork/app" target="_blank">{{ __('clockwork') }}</a>
-                        </li>
+                        @role('admin')
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="/clockwork/app" target="_blank">{{ __('clockwork') }}</a>
+                            </li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -71,6 +75,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}">
+                                        {{ __('Edit Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
