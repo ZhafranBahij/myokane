@@ -33,6 +33,7 @@ class PermissionSeeder extends Seeder
             'delete outcome',
 
             'view clockwork',
+            'view log',
 
             'view role',
             'create role',
@@ -50,6 +51,7 @@ class PermissionSeeder extends Seeder
         $admin = Role::whereName('admin')->first();
         $admin->givePermissionTo(Permission::all());
         $admin->revokePermissionTo('view clockwork');
+        $admin->revokePermissionTo('view log');
 
         $user = Role::whereName('user')->first();
         $user->givePermissionTo([

@@ -12,7 +12,7 @@ class IncomeEdit extends Component
     public $id;
 
     #[Validate]
-    public $value, $description;
+    public $value, $description, $date;
 
     public function rules()
     {
@@ -28,6 +28,7 @@ class IncomeEdit extends Component
         $this->id = $income->id;
         $this->value = $income->value;
         $this->description = $income->description;
+        $this->date = $income->date;
     }
 
     public function save()
@@ -38,6 +39,7 @@ class IncomeEdit extends Component
             'user_id' => auth()->user()->id,
             'value' => $this->value,
             'description' => $this->description,
+            'date' => $this->date,
         ]);
 
         session()->flash('status', 'Income successfully updated.');

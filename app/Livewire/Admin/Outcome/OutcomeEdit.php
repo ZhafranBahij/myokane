@@ -12,7 +12,7 @@ class OutcomeEdit extends Component
     public $id;
 
     #[Validate]
-    public $value, $description;
+    public $value, $description, $date;
 
     public function rules()
     {
@@ -28,6 +28,7 @@ class OutcomeEdit extends Component
         $this->id = $outcome->id;
         $this->value = $outcome->value;
         $this->description = $outcome->description;
+        $this->date = $outcome->date;
     }
 
     public function save()
@@ -38,6 +39,7 @@ class OutcomeEdit extends Component
             'user_id' => auth()->user()->id,
             'value' => $this->value,
             'description' => $this->description,
+            'date' => $this->date,
         ]);
 
         session()->flash('status', 'Outcome successfully updated.');

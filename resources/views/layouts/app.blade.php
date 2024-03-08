@@ -51,6 +51,11 @@
                                 <a class="nav-link text-capitalize" href="/clockwork/app" target="_blank">{{ __('clockwork') }}</a>
                             </li>
                         @endcan
+                        @can('view log')
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize" href="/log-viewer" target="_blank">{{ __('log view') }}</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,7 +80,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}">
+                                    <a class="dropdown-item" href="{{ route('users.profile') }}">
                                         {{ __('Edit Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

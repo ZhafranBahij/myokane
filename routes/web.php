@@ -10,6 +10,7 @@ use App\Livewire\Admin\Outcome\OutcomeIndex;
 use App\Livewire\Admin\User\UserCreate;
 use App\Livewire\Admin\User\UserEdit;
 use App\Livewire\Admin\User\UserIndex;
+use App\Livewire\User\ProfileEdit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', UserIndex::class)->name('index');
         Route::get('/create', UserCreate::class)->name('create');
         Route::get('/{user}/edit', UserEdit::class)->name('edit');
+        Route::get('/profile', ProfileEdit::class)->name('profile');
     });
 
     Route::name('incomes.')->prefix('/incomes')->group(function () {
