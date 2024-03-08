@@ -40,6 +40,14 @@
                                 <a class="nav-link text-capitalize {{ Route::is('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"  wire:navigate>{{ __('user') }}</a>
                             </li>
                         @endcan
+                        @can('view role')
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize {{ Route::is('roles.*') ? 'active' : '' }}" href="{{ route('roles.index') }}"  wire:navigate>{{ __('role') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-capitalize {{ Route::is('permissions.*') ? 'active' : '' }}" href="{{ route('permissions.index') }}"  wire:navigate>{{ __('permission') }}</a>
+                            </li>
+                        @endcan
                         <li class="nav-item">
                             <a class="nav-link text-capitalize {{ Route::is('incomes.*') ? 'active' : '' }}" href="{{ route('incomes.index') }}"  wire:navigate>{{ __('income') }}</a>
                         </li>
