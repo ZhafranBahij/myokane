@@ -45,12 +45,6 @@ class UserEdit extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-
-        $authorization = auth()->user()->hasPermissionTo('edit user');
-        if (! $authorization) {
-            return view('livewire.admin.forbidden');
-        }
-
         return view('livewire.admin.user.user-edit');
     }
 }

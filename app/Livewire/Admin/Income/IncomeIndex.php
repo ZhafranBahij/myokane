@@ -34,7 +34,7 @@ class IncomeIndex extends Component
     public function render()
     {
         $incomes = Income::query()
-        ->with(['User'])
+        ->with(['user'])
         ->where('description', 'LIKE', "%".$this->search."%")
         ->paginate(10);
 

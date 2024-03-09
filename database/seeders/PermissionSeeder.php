@@ -45,9 +45,6 @@ class PermissionSeeder extends Seeder
             Permission::create(['name' => $value]);
         }
 
-        $true_admin = Role::whereName('true admin')->first();
-        $true_admin->givePermissionTo(Permission::all());
-
         $admin = Role::whereName('admin')->first();
         $admin->givePermissionTo(Permission::all());
         $admin->revokePermissionTo('view clockwork');

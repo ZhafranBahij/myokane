@@ -40,7 +40,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', Dashboard::class)->name('home');
 
-    Route::name('users.')->prefix('/users')->group(function () {
+    Route::middleware(['role_or_permission:true admin|view user'])->name('users.')->prefix('/users')->group(function () {
         Route::get('/', UserIndex::class)->name('index');
         Route::get('/create', UserCreate::class)->name('create');
         Route::get('/{user}/edit', UserEdit::class)->name('edit');
@@ -59,13 +59,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{outcome}/edit', OutcomeEdit::class)->name('edit');
     });
 
-    Route::name('roles.')->prefix('/roles')->group(function () {
+    Route::middleware(['role_or_permission:true admin|view user'])->name('roles.')->prefix('/roles')->group(function () {
         Route::get('/', RoleIndex::class)->name('index');
         Route::get('/create', RoleCreate::class)->name('create');
         Route::get('/{role}/edit', RoleEdit::class)->name('edit');
     });
 
-    Route::name('permissions.')->prefix('/permissions')->group(function () {
+    Route::middleware(['role_or_permission:true admin|view user'])->name('permissions.')->prefix('/permissions')->group(function () {
         Route::get('/', PermissionIndex::class)->name('index');
         Route::get('/create', PermissionCreate::class)->name('create');
         Route::get('/{permission}/edit', PermissionEdit::class)->name('edit');

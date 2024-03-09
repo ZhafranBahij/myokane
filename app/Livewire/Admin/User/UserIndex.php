@@ -32,11 +32,6 @@ class UserIndex extends Component
     public function render()
     {
 
-        $authorization = auth()->user()->hasPermissionTo('view user');
-        if (! $authorization) {
-            return view('livewire.admin.forbidden');
-        }
-
         $users = User::query()
                     ->whereAny([
                         'name',

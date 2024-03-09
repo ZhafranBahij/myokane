@@ -46,7 +46,7 @@
                                     <a href="{{ route('incomes.edit', $item->id) }}" type="button" class="btn btn-warning" wire:navigate wire:loading.attr="disabled">Edit</a>
                                     <button type="button" class="btn btn-danger" wire:click="delete({{ $item->id }})" wire:confirm="Are you serious want to delete?" wire:loading.attr="disabled">Delete</button>
                                 </td>
-                                <td> {{ $item->user->name }} </td>
+                                <td> {{ $item->User->name }} </td>
                                 <td> Rp. {{ number_format($item->value, 0, ',', '.') }}</td>
                                 <td> {{ $item->description }} </td>
                                 <td> {{ $item->date }} </td>
