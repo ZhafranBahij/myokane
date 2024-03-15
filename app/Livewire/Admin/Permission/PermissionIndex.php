@@ -10,9 +10,19 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionIndex extends Component
 {
+
+    public $search;
+
     use WithPagination, WithoutUrlPagination;
 
     #[Layout('layouts.app')]
+
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
+    }
 
     public function delete(Permission $permission)
     {
@@ -24,6 +34,9 @@ class PermissionIndex extends Component
     public function render()
     {
         $permissions = Permission::query()
+                        ->whereAny([
+                            'name',
+                        ], 'LIKE', '%'.$this->search.'%')
                         ->latest()
                         ->paginate(10);
 
