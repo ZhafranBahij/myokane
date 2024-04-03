@@ -36,6 +36,14 @@ class OutcomeIndex extends Component
         ->where('description', 'LIKE', "%".$this->search."%")
         ->paginate(10);
 
+        if (! auth()->user()->hasRole(['admin', 'true admin'])) {
+            $outcomes = Outcome::query()
+            ->with(['User'])
+            ->where('user_id', auth()->user()->id)
+            ->where('description', 'LIKE', "%".$this->search."%")
+            ->paginate(10);
+        }
+
         $total_income = Income::query()
         ->where('user_id', auth()->user()->id)
         ->sum('value');

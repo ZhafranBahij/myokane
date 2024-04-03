@@ -33,10 +33,19 @@ class IncomeIndex extends Component
     #[Layout('layouts.app')]
     public function render()
     {
+
         $incomes = Income::query()
         ->with(['user'])
         ->where('description', 'LIKE', "%".$this->search."%")
         ->paginate(10);
+
+        if (! auth()->user()->hasRole(['admin', 'true admin'])) {
+            $incomes = Income::query()
+            ->with(['user'])
+            ->where('user_id', auth()->user()->id)
+            ->where('description', 'LIKE', "%".$this->search."%")
+            ->paginate(10);
+        }
 
         $total_income = Income::query()
                             ->where('user_id', auth()->user()->id)
